@@ -706,6 +706,13 @@ body {
   .container .popup__success-title {
     display: none;
   }
+  html[data-lang="ru"] .container .popup__success-title,
+  html[data-lang="tr"] .container .popup__success-title {
+    display: block;
+    font-size: 36px;
+    color: #b1ff41;
+    margin-bottom: 10px;
+  }
   .container .popup__success-texts {
     color: #fff;
     position: static;
@@ -1099,6 +1106,16 @@ html[data-lang="ru"] .wheel__button-bcg {
 }
 html[data-lang="ru"] .bonus-default { display: none !important; }
 html[data-lang="ru"] .bonus-ru { display: inline !important; }
+html[data-lang="ru"] .bonus-clarify-ru { display: block !important; }
+html[data-lang="tr"] .bonus-default { display: none !important; }
+html[data-lang="tr"] .bonus-tr { display: inline !important; }
+html[data-lang="tr"] .bonus-clarify-tr { display: block !important; }
+.countdown-timer { color: #ff6b35; font-size: 18px; font-weight: bold; margin: 12px 0 8px; display: none; }
+.social-proof { color: #aaa; font-size: 12px; margin-bottom: 10px; display: none; }
+html[data-lang="ru"] .countdown-timer.ru-timer { display: block !important; }
+html[data-lang="ru"] .social-proof.ru-social { display: block !important; }
+html[data-lang="tr"] .countdown-timer.tr-timer { display: block !important; }
+html[data-lang="tr"] .social-proof.tr-social { display: block !important; }
 html[data-lang="tr"] .wheel__inside {
   background-image: url(images/wheels-tr.png) !important;
 }
@@ -1173,7 +1190,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <div class="popup__failure" data-testid="wheel-popup-failure">
 <h3 class="popup__failure-title">
 <span data-lang="en">Unfortunately, you were unlucky on your first try.</span>
-<span data-lang="ru">К сожалению, вам не повезло с первой попытки.</span>
+<span data-lang="ru">К СОЖАЛЕНИЮ, ТЕБЕ НЕ ПОВЕЗЛО С ПЕРВОЙ ПОПЫТКИ.</span>
 <span data-lang="nl">Helaas had je geen geluk bij je eerste poging.</span>
 <span data-lang="pl">Niestety, nie miałeś szczęścia za pierwszym razem.</span>
 <span data-lang="ro">Din păcate, nu ai avut noroc la prima încercare.</span>
@@ -1183,7 +1200,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="lt">Deja, pirmą kartą jums nepasisekė.</span>
 <span data-lang="cs">Bohužel jste neměli štěstí na první pokus.</span>
 <span data-lang="lv">Diemžēl pirmajā mēģinājumā jums nepaveicās.</span>
-<span data-lang="tr">Maalesef ilk denemenizde şanssızdınız.</span>
+<span data-lang="tr">MAALESEF İLK DENEMENİZDE ŞANSINIZ YAVER GİTMEDİ.</span>
 <span data-lang="ar">للأسف، لم تكن محظوظًا في محاولتك الأولى.</span>
 <span data-lang="es">Desafortunadamente, no tuviste suerte en tu primer intento.</span>
 <span data-lang="uk">На жаль, вам не пощастило з першої спроби.</span>
@@ -1226,7 +1243,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 </h3>
 <p class="popup__failure-text">
 <span data-lang="en">But luckily, you can spin the wheel again!</span>
-<span data-lang="ru">Но, к счастью, вы можете крутить колесо снова!</span>
+<span data-lang="ru">НО МОЖЕШЬ КРУТИТЬ СНОВА!</span>
 <span data-lang="nl">Maar gelukkig kun je het rad opnieuw draaien!</span>
 <span data-lang="pl">Ale na szczęście możesz zakręcić kołem ponownie!</span>
 <span data-lang="ro">Dar din fericire, poți învârti roata din nou!</span>
@@ -1236,7 +1253,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="lt">Bet, laimei, galite sukti ratą dar kartą!</span>
 <span data-lang="cs">Ale naštěstí můžete kolem znovu zatočit!</span>
 <span data-lang="lv">Bet par laimi jūs varat griezt riteni vēlreiz!</span>
-<span data-lang="tr">Ama şans eseri çarkı tekrar çevirebilirsiniz!</span>
+<span data-lang="tr">AMA ŞANSINIZ VAR, TEKRAR ÇEVİREBİLİRSİNİZ!</span>
 <span data-lang="ar">لكن لحسن الحظ، يمكنك تدوير العجلة مرة أخرى!</span>
 <span data-lang="es">¡Pero por suerte, puedes girar la rueda de nuevo!</span>
 <span data-lang="uk">Але, на щастя, ви можете крутити колесо знову!</span>
@@ -1338,11 +1355,11 @@ html[data-lang="tr"] .wheel__button-bcg {
 <div class="popup" id="pop2" data-testid="wheel-popup">
 <div class="popup__content">
 <div class="popup__success" data-testid="wheel-popup-success">
-<h2 class="popup__success-title"></h2>
+<h2 class="popup__success-title"><span data-lang="ru">ПОЗДРАВЛЯЕМ!</span><span data-lang="tr">TEBRİKLER!</span></h2>
 <div class="popup__success-texts">
 <h3 class="popup__success-main-text">
 <span data-lang="en">You've just won your</span>
-<span data-lang="ru">Вы только что выиграли свои</span>
+<span data-lang="ru">ТЫ ТОЛЬКО ЧТО ВЫИГРАЛ</span>
 <span data-lang="nl">Je hebt zojuist je</span>
 <span data-lang="pl">Właśnie wygrałeś swoje</span>
 <span data-lang="ro">Tocmai ai câștigat</span>
@@ -1352,7 +1369,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="lt">Jūs ką tik laimėjote savo</span>
 <span data-lang="cs">Právě jste vyhráli své</span>
 <span data-lang="lv">Jūs tikko laimējāt savus</span>
-<span data-lang="tr">Az önce kazandınız</span>
+<span data-lang="tr">AZ ÖNCE KAZANDIN</span>
 <span data-lang="ar">لقد فزت للتو بـ</span>
 <span data-lang="es">¡Acabas de ganar tus</span>
 <span data-lang="uk">Ви щойно виграли свої</span>
@@ -1392,11 +1409,13 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="uz">Siz hozirgina yutib oldingiz</span>
 <span data-lang="vi">Bạn vừa giành được</span>
 <span data-lang="zh">您刚刚赢得了您的</span>
-<br /><b style="color: #b1ff41"><span class="bonus-default">25 SC and 25K GC!</span><span class="bonus-ru" style="display:none">25 СК и 25К ГК!</span></b>
+<br /><b style="color: #b1ff41"><span class="bonus-default">25 SC and 25K GC!</span><span class="bonus-ru" style="display:none">25 СК И 25К ГК!</span><span class="bonus-tr" style="display:none">25 SC VE 25K GC!</span></b>
+<br /><span class="bonus-clarify-ru" style="display:none; font-size: 14px; color: #ccc;">Бесплатные монеты для игры!</span>
+<span class="bonus-clarify-tr" style="display:none; font-size: 14px; color: #ccc;">Ücretsiz oyun parası!</span>
 </h3>
 <p class="popup__success-subtext">
 <span data-lang="en">on your first deposit</span>
-<span data-lang="ru">при вашем первом депозите</span>
+<span data-lang="ru">СДЕЛАЙ ПЕРВЫЙ ДЕПОЗИТ И ЗАБЕРИ СВОЙ БОНУС!</span>
 <span data-lang="nl">bij je eerste storting</span>
 <span data-lang="pl">przy pierwszym depozycie</span>
 <span data-lang="ro">la prima ta depunere</span>
@@ -1406,7 +1425,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="lt">su pirmuoju įnašu</span>
 <span data-lang="cs">při vašem prvním vkladu</span>
 <span data-lang="lv">ar jūsu pirmo depozītu</span>
-<span data-lang="tr">ilk yatırımınızda</span>
+<span data-lang="tr">İLK YATIRIMINDA BONUSUNU AL!</span>
 <span data-lang="ar">عند إيداعك الأول</span>
 <span data-lang="es">en tu primer depósito</span>
 <span data-lang="uk">при вашому першому депозиті</span>
@@ -1448,7 +1467,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="zh">在您的首次存款中</span>
 <br />
 <span data-lang="en">Click below to claim it.</span>
-<span data-lang="ru">Нажмите ниже, чтобы получить.</span>
+<span data-lang="ru"></span>
 <span data-lang="nl">Klik hieronder om het op te eisen.</span>
 <span data-lang="pl">Kliknij poniżej, aby odebrać.</span>
 <span data-lang="ro">Fă clic mai jos pentru a revendica.</span>
@@ -1458,7 +1477,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="lt">Spustelėkite žemiau, kad atsiimtumėte.</span>
 <span data-lang="cs">Klikněte níže pro vyzvednutí.</span>
 <span data-lang="lv">Noklikšķiniet zemāk, lai pieprasītu.</span>
-<span data-lang="tr">Talep etmek için aşağıya tıklayın.</span>
+<span data-lang="tr"></span>
 <span data-lang="ar">انقر أدناه للمطالبة بها.</span>
 <span data-lang="es">Haz clic abajo para reclamarlo.</span>
 <span data-lang="uk">Натисніть нижче, щоб отримати.</span>
@@ -1500,9 +1519,13 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="zh">点击下方领取。</span>
 </p>
 </div>
+<div class="countdown-timer ru-timer" id="timerRu">⏰ Бонус активен: <span id="countdownRu">15:00</span></div>
+<div class="social-proof ru-social">🌍 50 млн игроков · ⚡ Вывод за 10 мин</div>
+<div class="countdown-timer tr-timer" id="timerTr">⏰ Bonusun <span id="countdownTr">15:00</span> dakika geçerli</div>
+<div class="social-proof tr-social">🌍 50M oyuncu · ⚡ 10 dk'da çekim</div>
 <a class="cta popup__success-button" href="https://stake.com/?c=rPFh1hSP" target="_blank">
 <span data-lang="en">CONTINUE</span>
-<span data-lang="ru">ПРОДОЛЖИТЬ</span>
+<span data-lang="ru">ЗАБРАТЬ БОНУС →</span>
 <span data-lang="nl">DOORGAAN</span>
 <span data-lang="pl">KONTYNUUJ</span>
 <span data-lang="ro">CONTINUĂ</span>
@@ -1512,7 +1535,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="lt">TĘSTI</span>
 <span data-lang="cs">POKRAČOVAT</span>
 <span data-lang="lv">TURPINĀT</span>
-<span data-lang="tr">DEVAM ET</span>
+<span data-lang="tr">BONUSUNU AL →</span>
 <span data-lang="ar">متابعة</span>
 <span data-lang="es">CONTINUAR</span>
 <span data-lang="uk">ПРОДОВЖИТИ</span>
@@ -1682,6 +1705,30 @@ function spinWheelAgain() {
 
 spinButton.addEventListener("click", spinWheel)
 spinAgain.addEventListener("click", spinWheelAgain)
+
+// Countdown timer for RU and TR win screens
+let countdownStarted = false;
+function startCountdown() {
+  if (countdownStarted) return;
+  countdownStarted = true;
+  let seconds = 15 * 60;
+  const timerRu = document.getElementById('countdownRu');
+  const timerTr = document.getElementById('countdownTr');
+  const interval = setInterval(() => {
+    seconds--;
+    if (seconds <= 0) { clearInterval(interval); seconds = 0; }
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    const display = m + ':' + (s < 10 ? '0' : '') + s;
+    if (timerRu) timerRu.textContent = display;
+    if (timerTr) timerTr.textContent = display;
+  }, 1000);
+}
+// Start countdown when win popup appears
+const observer = new MutationObserver(() => {
+  if (pop2.classList.contains('popup--show')) startCountdown();
+});
+observer.observe(pop2, { attributes: true, attributeFilter: ['class'] });
 
 </script>
 </body>
