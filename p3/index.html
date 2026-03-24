@@ -216,8 +216,8 @@ color: #000;
 text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
-/* Override data-lang spans inside ribbons so they don't break first-child/last-child */
-.ribbons > span [data-lang] {
+/* Override all inner spans inside ribbons */
+.ribbons > span span {
   padding: 0;
   min-width: 0;
   box-shadow: none;
@@ -225,6 +225,7 @@ text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
   text-shadow: inherit;
   color: inherit;
   letter-spacing: inherit;
+  display: inline;
 }
 
 /* Wheel Section */
