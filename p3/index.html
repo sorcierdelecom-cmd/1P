@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Online Casino and Live Casino</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: Arial, sans-serif;
+min-height: 100vh;
+background-image: url('images/bg.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+overflow-x: hidden;
+position: relative;
+}
+
+/* Desktop background */
+@media screen and (min-width: 768px) {
+body {
+background-image: url('images/bg.jpg');
+}
+}
+
+.main {
+min-height: 100vh;
+position: relative;
+z-index: 2;
+}
+
+/* Header */
+.header {
+position: relative;
+z-index: 10;
+padding: 20px;
+text-align: center;
+}
+
+.header__logo {
+display: inline-block;
+text-decoration: none;
+}
+
+.header__logo-img {
+max-width: 200px;
+width: 100%;
+height: auto;
+display: block;
+}
+
+.header__logo-text {
+font-size: 32px;
+font-weight: bold;
+color: #ffd700;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+letter-spacing: 2px;
+display: none;
+}
+
+/* Decorative Items */
+.decor-items {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 1;
+overflow: hidden;
+}
+
+.decor-items__container {
+position: relative;
+width: 100%;
+height: 100%;
+}
+
+.decor-items__item {
+position: absolute;
+pointer-events: none;
+}
+
+.decor-items__item img {
+max-width: 100%;
+height: auto;
+}
+
+/* Position decorative characters */
+.decor-items__item--god {
+left: 0%;
+bottom: 5%;
+width: 600px;
+max-width: 50%;
+z-index: 2;
+}
+
+.decor-items__item--girl {
+right: 0%;
+bottom: 5%;
+width: 500px;
+max-width: 45%;
+z-index: 2;
+}
+
+.decor-items__item--1,
+.decor-items__item--2,
+.decor-items__item--3 {
+width: 100px;
+opacity: 0.8;
+}
+
+.decor-items__item--1 {
+top: 20%;
+left: 10%;
+}
+
+.decor-items__item--2 {
+top: 30%;
+right: 15%;
+}
+
+.decor-items__item--3 {
+bottom: 30%;
+left: 15%;
+}
+
+/* Falling Coins Animation */
+.falling-items {
+position: absolute;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+.falling-items__item {
+position: absolute;
+animation: fall linear infinite;
+opacity: 0.8;
+}
+
+.falling-items__item img {
+width: 40px;
+height: auto;
+}
+
+.falling-items__item--1 { left: 10%; animation-duration: 3s; animation-delay: 0s; }
+.falling-items__item--2 { left: 20%; animation-duration: 4s; animation-delay: 0.5s; }
+.falling-items__item--3 { left: 30%; animation-duration: 3.5s; animation-delay: 1s; }
+.falling-items__item--4 { left: 40%; animation-duration: 4.5s; animation-delay: 1.5s; }
+.falling-items__item--5 { left: 50%; animation-duration: 3s; animation-delay: 2s; }
+.falling-items__item--6 { left: 60%; animation-duration: 4s; animation-delay: 0.3s; }
+.falling-items__item--7 { left: 70%; animation-duration: 3.5s; animation-delay: 0.8s; }
+.falling-items__item--8 { left: 80%; animation-duration: 4.5s; animation-delay: 1.2s; }
+.falling-items__item--9 { left: 90%; animation-duration: 3s; animation-delay: 1.8s; }
+
+@keyframes fall {
+0% {
+transform: translateY(-100px) rotate(0deg);
+opacity: 0;
+}
+10% {
+opacity: 0.8;
+}
+90% {
+opacity: 0.8;
+}
+100% {
+transform: translateY(100vh) rotate(360deg);
+opacity: 0;
+}
+}
+
+/* Ribbons */
+.ribbons {
+position: relative;
+z-index: 5;
+text-align: center;
+margin: 10px 0 0 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 8px;
+}
+
+.ribbons span {
+padding: 10px 30px;
+border-radius: 0;
+font-weight: bold;
+font-size: 16px;
+text-transform: uppercase;
+letter-spacing: 2px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+position: relative;
+display: inline-block;
+min-width: 200px;
+text-align: center;
+}
+
+.ribbons span:first-child {
+background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+color: #fff;
+text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.ribbons span:last-child {
+background: linear-gradient(135deg, #00ffff 0%, #00cccc 100%);
+color: #000;
+text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Override data-lang spans inside ribbons so they don't break first-child/last-child */
+.ribbons > span [data-lang] {
+  padding: 0;
+  min-width: 0;
+  box-shadow: none;
+  background: none !important;
+  text-shadow: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+/* Wheel Section */
+.wheel {
+position: relative;
+z-index: 5;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 20px;
+margin-bottom: 100px;
+}
+
+.wheel__attempts {
+position: relative;
+z-index: 5;
+margin-top: 0;
+margin-bottom: 15px;
+font-size: 14px;
+color: #fff;
+text-align: center;
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.wheel__attempts-title {
+color: #fff;
+}
+
+.wheel__attempts-value {
+color: #ffd700;
+font-size: 18px;
+font-weight: bold;
+}
+
+.wheel__layout {
+position: relative;
+width: 550px;
+height: 550px;
+max-width: 90vw;
+max-height: 90vw;
+}
+
+.wheel__spinner {
+position: relative;
+width: 100%;
+height: 100%;
+}
+
+.wheel__spinner-around {
+position: absolute;
+width: 100%;
+height: 100%;
+background-image: url('images/wheel-around.png');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+z-index: 1;
+}
+
+.wheel__spinner-img {
+position: absolute;
+width: 100%;
+height: 100%;
+background-image: url('images/wheel.png');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+border-radius: 50%;
+z-index: 2;
+animation: wheelIdle 3s ease-in-out infinite;
+filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes wheelIdle {
+0%, 100% {
+transform: rotate(-5deg);
+}
+50% {
+transform: rotate(5deg);
+}
+}
+
+.wheel__spinner--animate .wheel__spinner-img {
+animation: none;
+transition: transform 6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.wheel__spinner--animate.wheel__spinner--win .wheel__spinner-img {
+transition: transform 7s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+.wheel__spinner-arrow {
+position: absolute;
+top: -5px;
+left: 50%;
+transform: translateX(-50%);
+width: 100px;
+height: 100px;
+background-image: url('images/arrow.png');
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+z-index: 10;
+filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+pointer-events: none;
+}
+
+.wheel__spinner-center {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 160px;
+height: 160px;
+border-radius: 50%;
+background: #ff0000;
+border: none;
+z-index: 5;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5);
+cursor: pointer;
+transition: all 0.3s ease;
+background-image: url('images/btn-spin.png');
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+.wheel__spinner-center:hover {
+transform: translate(-50%, -50%) scale(1.05);
+box-shadow: 0 6px 25px rgba(255, 0, 0, 0.7);
+}
+
+.wheel__spinner-center:disabled {
+cursor: not-allowed;
+opacity: 0.7;
+}
+
+.wheel__spinner-bling {
+position: absolute;
+width: 100%;
+height: 100%;
+/* wheel-bling.png not provided */
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+z-index: 3;
+pointer-events: none;
+animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+0%, 100% { opacity: 1; transform: scale(1); }
+50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+/* Achievements */
+.wheel__achievements {
+position: relative;
+z-index: 5;
+text-align: center;
+margin: 20px 0;
+}
+
+.wheel__achievements-fs {
+display: none;
+}
+
+.wheel__achievements-fs.show {
+display: block;
+}
+
+.lights-content {
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+
+.lights-content__gift {
+width: 80px;
+height: auto;
+}
+
+.lights-content__value {
+font-size: 32px;
+font-weight: bold;
+color: #ffd700;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.lights-content__value--subtitle {
+font-size: 18px;
+display: block;
+color: #fff;
+}
+
+/* Modal */
+.main__modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+z-index: 1000;
+align-items: center;
+justify-content: center;
+}
+
+.main__modal.active {
+display: flex;
+}
+
+/* Failure Modal */
+.main__modal-failure {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+z-index: 1000;
+align-items: center;
+justify-content: center;
+}
+
+.main__modal-failure.active {
+display: flex;
+}
+
+.modal-failure {
+position: relative;
+max-width: 500px;
+width: 90%;
+}
+
+.modal-failure__inner {
+position: relative;
+background: linear-gradient(135deg, #1a4d7a 0%, #003366 100%);
+border-radius: 20px;
+padding: 40px;
+text-align: center;
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+border: 3px solid #b1ff41;
+/* fail.png not provided */
+}
+
+.modal-failure__title {
+font-size: 28px;
+color: #fff;
+margin-bottom: 20px;
+text-transform: uppercase;
+}
+
+.modal-failure__text {
+font-size: 18px;
+color: #ccc;
+margin-bottom: 30px;
+}
+
+.modal-failure__button {
+display: inline-block;
+background: linear-gradient(135deg, #b1ff41 0%, #8fcc00 100%);
+color: #001a33;
+padding: 15px 40px;
+font-size: 18px;
+font-weight: bold;
+border-radius: 30px;
+text-decoration: none;
+text-transform: uppercase;
+letter-spacing: 1px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.modal-failure__button:hover {
+transform: scale(1.05);
+box-shadow: 0 6px 20px rgba(177, 255, 65, 0.5);
+}
+
+.modal {
+position: relative;
+max-width: 500px;
+width: 90%;
+}
+
+.modal__inner {
+position: relative;
+background: linear-gradient(135deg, #1a4d7a 0%, #003366 100%);
+border-radius: 20px;
+padding: 40px;
+text-align: center;
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+border: 3px solid #b1ff41;
+}
+
+.modal__gift {
+position: absolute;
+width: 100px;
+height: auto;
+pointer-events: none;
+}
+
+.modal__gift--top {
+top: -50px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.modal__gift--bottom {
+bottom: -50px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.modal__title {
+font-size: 32px;
+color: #fff;
+margin-bottom: 20px;
+text-transform: uppercase;
+}
+
+.modal__text {
+font-size: 20px;
+color: #ccc;
+margin-bottom: 20px;
+}
+
+.ribbons--modal {
+margin: 20px 0;
+}
+
+.ribbons--modal span {
+font-size: 16px;
+padding: 6px 16px;
+}
+
+.claim-link {
+display: inline-block;
+background: linear-gradient(135deg, #b1ff41 0%, #8fcc00 100%);
+color: #001a33;
+padding: 15px 40px;
+font-size: 18px;
+font-weight: bold;
+border-radius: 30px;
+text-decoration: none;
+text-transform: uppercase;
+letter-spacing: 1px;
+margin-top: 20px;
+transition: all 0.3s ease;
+}
+
+.claim-link:hover {
+transform: scale(1.05);
+box-shadow: 0 6px 20px rgba(177, 255, 65, 0.5);
+}
+
+/* Footer */
+.compliance-footer {
+background-color: #000;
+padding: 12px;
+position: relative;
+z-index: 5;
+}
+
+.footer__text {
+font-size: 12px;
+line-height: 1.25;
+text-align: left;
+margin-bottom: 8px;
+color: #ffffff;
+}
+
+.footer__text.last {
+margin-bottom: 0;
+}
+
+.footer__text a {
+color: #ffffff;
+text-decoration: underline;
+}
+
+/* Responsive */
+@media screen and (max-width: 576px) {
+.header__logo-text {
+display: none;
+}
+
+.header__logo-img {
+display: block;
+max-width: 150px;
+}
+
+.ribbons {
+margin: 8px 0 0 0;
+}
+
+.ribbons span {
+font-size: 14px;
+padding: 8px 20px;
+min-width: 180px;
+}
+
+.wheel__attempts {
+font-size: 12px;
+margin-top: 5px;
+margin-bottom: 10px;
+}
+
+.wheel__attempts-value {
+font-size: 16px;
+}
+
+.wheel__layout {
+width: 400px;
+height: 400px;
+}
+
+.wheel__spinner-center {
+width: 120px;
+height: 120px;
+}
+
+.wheel__spinner-arrow {
+width: 70px;
+height: 70px;
+top: -25px;
+}
+
+.decor-items__item--god {
+left: -5%;
+bottom: 0%;
+width: 850px;
+max-width: 60%;
+z-index: 10;
+}
+
+.decor-items__item--girl {
+right: -5%;
+bottom: 0%;
+width: 400px;
+max-width: 60%;
+z-index: 10;
+}
+
+.modal {
+max-width: 90%;
+width: 90%;
+}
+
+.modal__inner {
+padding: 30px 20px;
+border-radius: 15px;
+}
+
+.modal__gift {
+width: 60px;
+height: auto;
+}
+
+.modal__gift--top {
+top: -30px;
+}
+
+.modal__gift--bottom {
+bottom: -30px;
+}
+
+.modal__title {
+font-size: 24px;
+margin-bottom: 15px;
+}
+
+.modal__text {
+font-size: 16px;
+margin-bottom: 15px;
+}
+
+.ribbons--modal {
+margin: 15px 0;
+}
+
+.ribbons--modal span {
+font-size: 14px;
+padding: 8px 12px;
+display: block;
+margin: 5px 0;
+}
+
+.claim-link {
+font-size: 16px;
+padding: 12px 30px;
+margin-top: 15px;
+}
+
+.modal-failure {
+max-width: 90%;
+width: 90%;
+}
+
+.modal-failure__inner {
+padding: 30px 20px;
+border-radius: 15px;
+}
+
+.modal-failure__title {
+font-size: 22px;
+margin-bottom: 15px;
+}
+
+.modal-failure__text {
+font-size: 16px;
+margin-bottom: 20px;
+}
+
+.modal-failure__button {
+font-size: 16px;
+padding: 12px 30px;
+}
+
+.footer__text {
+font-size: 10px;
+}
+}
+
+.hide {
+display: none !important;
+}
+
+/* ===== LANGUAGE SWITCHER ===== */
+.lang-switcher {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    z-index: 1000;
+}
+#langSelect {
+    padding: 8px 30px 8px 12px;
+    background: rgba(255,209,0,0.35) url("images/arrow.svg") no-repeat right 8px center;
+    background-size: 12px;
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Twemoji Mozilla", "EmojiOne Color", sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-variant-emoji: emoji;
+    text-rendering: optimizeLegibility;
+}
+@media (min-width: 768px) {
+    #langSelect {
+        background-size: 16px;
+        padding: 8px 35px 8px 12px;
+    }
+}
+#langSelect:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+}
+#langSelect:focus {
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+}
+#langSelect option {
+    font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Twemoji Mozilla", "EmojiOne Color", sans-serif;
+    font-variant-emoji: emoji;
+    text-rendering: optimizeLegibility;
+    background: rgba(0, 23, 44, 0.9);
+    color: #ffffff;
+}
+#langSelect::-webkit-scrollbar {
+    width: 8px;
+}
+#langSelect::-webkit-scrollbar-track {
+    background: #222222;
+}
+#langSelect::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 4px;
+}
+#langSelect::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+@media (max-width: 767px) {
+    .lang-switcher {
+        top: 10px;
+        right: 10px;
+    }
+    #langSelect {
+        padding: 6px 21px 6px 7px;
+        font-size: 12px;
+    }
+}
+@supports (font-variant-emoji: emoji) {
+    #langSelect, #langSelect option {
+        font-variant-emoji: emoji !important;
+    }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    #langSelect, #langSelect option {
+        font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif !important;
+    }
+}
+@-moz-document url-prefix() {
+    #langSelect, #langSelect option {
+        font-family: "Twemoji Mozilla", "Noto Color Emoji", "Segoe UI Emoji", sans-serif !important;
+    }
+}
+
+/* Russian wheel swap */
+html[data-lang="ru"] .wheel__spinner-img {
+  background-image: url('images/wheel-russian.png') !important;
+}
+
+/* Turkish wheel swap */
+html[data-lang="tr"] .wheel__spinner-img {
+  background-image: url('images/wheel-turkish.png') !important;
+}
+
+/* Russian bonus text swap */
+html[data-lang="ru"] .bonus-gc-default, html[data-lang="ru"] .bonus-sc-default { display: none !important; }
+html[data-lang="ru"] .bonus-gc-ru, html[data-lang="ru"] .bonus-sc-ru { display: inline !important; }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE SWITCHER -->
+<div class="lang-switcher">
+<select id="langSelect">
+<option value="en">&#x1F1FA;&#x1F1F8; EN</option>
+<option value="ru">&#x1F1F7;&#x1F1FA; RU</option>
+<option value="nl">&#x1F1F3;&#x1F1F1; NL</option>
+<option value="pl">&#x1F1F5;&#x1F1F1; PL</option>
+<option value="ro">&#x1F1F7;&#x1F1F4; RO</option>
+<option value="bg">&#x1F1E7;&#x1F1EC; BG</option>
+<option value="hu">&#x1F1ED;&#x1F1FA; HU</option>
+<option value="sl">&#x1F1F8;&#x1F1EE; SL</option>
+<option value="lt">&#x1F1F1;&#x1F1F9; LT</option>
+<option value="cs">&#x1F1E8;&#x1F1FF; CS</option>
+<option value="lv">&#x1F1F1;&#x1F1FB; LV</option>
+<option value="tr">&#x1F1F9;&#x1F1F7; TR</option>
+<option value="ar">&#x1F1F8;&#x1F1E6; AR</option>
+<option value="es">&#x1F1EA;&#x1F1F8; ES</option>
+<option value="uk">&#x1F1FA;&#x1F1E6; UK</option>
+<option value="ko">&#x1F1F0;&#x1F1F7; KO</option>
+<option value="de">&#x1F1E9;&#x1F1EA; DE</option>
+<option value="sk">&#x1F1F8;&#x1F1F0; SK</option>
+<option value="be">&#x1F1E7;&#x1F1FE; BE</option>
+<option value="bn">&#x1F1E7;&#x1F1E9; BN</option>
+<option value="bs">&#x1F1E7;&#x1F1E6; BS</option>
+<option value="da">&#x1F1E9;&#x1F1F0; DA</option>
+<option value="el">&#x1F1EC;&#x1F1F7; EL</option>
+<option value="et">&#x1F1EA;&#x1F1EA; ET</option>
+<option value="fi">&#x1F1EB;&#x1F1EE; FI</option>
+<option value="fr">&#x1F1EB;&#x1F1F7; FR</option>
+<option value="ga">&#x1F1EE;&#x1F1EA; GA</option>
+<option value="he">&#x1F1EE;&#x1F1F1; HE</option>
+<option value="hi">&#x1F1EE;&#x1F1F3; HI</option>
+<option value="hr">&#x1F1ED;&#x1F1F7; HR</option>
+<option value="hy">&#x1F1E6;&#x1F1F2; HY</option>
+<option value="id">&#x1F1EE;&#x1F1E9; ID</option>
+<option value="is">&#x1F1EE;&#x1F1F8; IS</option>
+<option value="fa">&#x1F1EE;&#x1F1F7; FA</option>
+<option value="it">&#x1F1EE;&#x1F1F9; IT</option>
+<option value="ja">&#x1F1EF;&#x1F1F5; JA</option>
+<option value="ka">&#x1F1EC;&#x1F1EA; KA</option>
+<option value="kk">&#x1F1F0;&#x1F1FF; KK</option>
+<option value="kl">&#x1F1EC;&#x1F1F1; KL</option>
+<option value="ky">&#x1F1F0;&#x1F1EC; KY</option>
+<option value="ms">&#x1F1F2;&#x1F1FE; MS</option>
+<option value="no">&#x1F1F3;&#x1F1F4; NO</option>
+<option value="pt">&#x1F1F5;&#x1F1F9; PT</option>
+<option value="rm">&#x1F1E8;&#x1F1ED; RM</option>
+<option value="sq">&#x1F1E6;&#x1F1F1; SQ</option>
+<option value="sr">&#x1F1F7;&#x1F1F8; SR</option>
+<option value="tg">&#x1F1F9;&#x1F1EF; TG</option>
+<option value="th">&#x1F1F9;&#x1F1ED; TH</option>
+<option value="uz">&#x1F1FA;&#x1F1FF; UZ</option>
+<option value="vi">&#x1F1FB;&#x1F1F3; VI</option>
+<option value="zh">&#x1F1E8;&#x1F1F3; ZH</option>
+</select>
+</div>
+
+<div class="main">
+<header class="header">
+<a class="header__logo redirectlink" href="#" class="cta">
+<div class="header__logo-text">Casino.click</div>
+<img class="header__logo-img" src="images/casino_click_logo.png" alt="Casino.click" />
+</a>
+</header>
+
+<div class="decor-items">
+<div class="decor-items__container">
+<div class="falling-items">
+<div class="falling-items__set">
+<div class="falling-items__item falling-items__item--1">
+<img src="images/coin-1.png" alt="Money" />
+</div>
+<div class="falling-items__item falling-items__item--2">
+<img src="images/coin-2.png" alt="Money" />
+</div>
+<div class="falling-items__item falling-items__item--3">
+<img src="images/coin-3.png" alt="Money" />
+</div>
+<div class="falling-items__item falling-items__item--4">
+<img src="images/coin-4.png" alt="Money" />
+</div>
+<div class="falling-items__item falling-items__item--5">
+<img src="images/coin-5.png" alt="Money" />
+</div>
+<div class="falling-items__item falling-items__item--6">
+<img src="images/coin-5.png" alt="Money" />
+</div>
+<div class="falling-items__item falling-items__item--7">
+<img src="images/coin-1.png" alt="Money" />
+</div>
+<div class="falling-items__item falling-items__item--8">
+<img src="images/coin-1.png" alt="Money" />
+</div>
+<div class="falling-items__item falling-items__item--9">
+<img src="images/coin-3.png" alt="Money" />
+</div>
+</div>
+</div>
+<div class="decor-items__item decor-items__item--god">
+<img src="images/god.png" alt="God character" />
+</div>
+<div class="decor-items__item decor-items__item--girl">
+<img src="images/girl.png" alt="Girl character" />
+</div>
+<div class="decor-items__item decor-items__item--1">
+<img src="images/1.png" alt="Crystals" />
+</div>
+<div class="decor-items__item decor-items__item--2">
+<img src="images/2.png" alt="Crystals" />
+</div>
+<div class="decor-items__item decor-items__item--3">
+<img src="images/3.png" alt="Crystals" />
+</div>
+</div>
+</div>
+
+<div class="ribbons">
+<span><span data-lang="en">TRY YOUR LUCK</span><span data-lang="ru">ИСПЫТАЙ УДАЧУ</span><span data-lang="nl">BEPROEF JE GELUK</span><span data-lang="pl">SPRÓBUJ SZCZĘŚCIA</span><span data-lang="ro">ÎNCEARCĂ-ȚI NOROCUL</span><span data-lang="bg">ОПИТАЙ КЪСМЕТА СИ</span><span data-lang="hu">PRÓBÁLD KI A SZERENCSÉD</span><span data-lang="sl">PREIZKUSI SREČO</span><span data-lang="lt">IŠBANDYK SĖKMĘ</span><span data-lang="cs">ZKUS ŠTĚSTÍ</span><span data-lang="lv">IZMĒĢINI VEIKSMI</span><span data-lang="tr">ŞANSINI DENE</span><span data-lang="ar">جرّب حظك</span><span data-lang="es">PRUEBA TU SUERTE</span><span data-lang="uk">ВИПРОБУЙ УДАЧУ</span><span data-lang="ko">행운을 시험하세요</span><span data-lang="de">VERSUCHE DEIN GLÜCK</span><span data-lang="sk">SKÚS ŠŤASTIE</span><span data-lang="be">ПАСПРАБУЙ УДАЧУ</span><span data-lang="bn">আপনার ভাগ্য পরীক্ষা করুন</span><span data-lang="bs">ISKUŠAJ SREĆU</span><span data-lang="da">PRØV DIN LYKKE</span><span data-lang="el">ΔΟΚΙΜΑΣΕ ΤΗΝ ΤΥΧΗ ΣΟΥ</span><span data-lang="et">PROOVI ÕNNE</span><span data-lang="fi">KOKEILE ONNEASI</span><span data-lang="fr">TENTE TA CHANCE</span><span data-lang="ga">BAIN TRIAIL AS D'ÁDH</span><span data-lang="he">נסה את מזלך</span><span data-lang="hi">अपनी किस्मत आज़माएं</span><span data-lang="hr">ISKUŠAJ SREĆU</span><span data-lang="hy">ՓՈՐՁԻՐ ԲԱԽՏԴ</span><span data-lang="id">COBA KEBERUNTUNGANMU</span><span data-lang="is">REYNDU HEPPNINA</span><span data-lang="fa">شانست را امتحان کن</span><span data-lang="it">TENTA LA FORTUNA</span><span data-lang="ja">運を試そう</span><span data-lang="ka">გამოსცადე იღბალი</span><span data-lang="kk">СӘТТІЛІГІҢДІ СЫНА</span><span data-lang="kl">PISINNARIT NASSARIARUK</span><span data-lang="ky">ИЙГИЛИГИҢДИ СЫНА</span><span data-lang="ms">CUBA NASIB ANDA</span><span data-lang="no">PRØV LYKKEN</span><span data-lang="pt">TENTE A SUA SORTE</span><span data-lang="rm">EMPROVA TIA FORTUNA</span><span data-lang="sq">PROVO FATIN</span><span data-lang="sr">ОКУШАЈ СРЕЋУ</span><span data-lang="tg">БАХТАТРО ОЗМОЕД</span><span data-lang="th">ลองเสี่ยงโชค</span><span data-lang="uz">OMADINGIZNI SINANG</span><span data-lang="vi">THỬ VẬN MAY</span><span data-lang="zh">试试你的运气</span></span>
+<span><span data-lang="en">SPIN NOW</span><span data-lang="ru">КРУТИ СЕЙЧАС</span><span data-lang="nl">DRAAI NU</span><span data-lang="pl">KRĘĆ TERAZ</span><span data-lang="ro">ROTEȘTE ACUM</span><span data-lang="bg">ЗАВЪРТИ СЕГА</span><span data-lang="hu">PÖRGETS MOST</span><span data-lang="sl">ZAVRTI ZDAJ</span><span data-lang="lt">SUKITE DABAR</span><span data-lang="cs">TOČI TEĎ</span><span data-lang="lv">GRIEZ TAGAD</span><span data-lang="tr">ŞİMDİ ÇEVİR</span><span data-lang="ar">أدر الآن</span><span data-lang="es">GIRA AHORA</span><span data-lang="uk">КРУТИ ЗАРАЗ</span><span data-lang="ko">지금 돌리세요</span><span data-lang="de">JETZT DREHEN</span><span data-lang="sk">TOČI TERAZ</span><span data-lang="be">КРУЦІ ЗАРАЗ</span><span data-lang="bn">এখন ঘোরান</span><span data-lang="bs">ZAVRTI SADA</span><span data-lang="da">DREJ NU</span><span data-lang="el">ΓΥΡΙΣΕ ΤΩΡΑ</span><span data-lang="et">KEERA NÜÜD</span><span data-lang="fi">PYÖRITÄ NYT</span><span data-lang="fr">TOURNE MAINTENANT</span><span data-lang="ga">CAS ANOIS</span><span data-lang="he">סובב עכשיו</span><span data-lang="hi">अभी घुमाएं</span><span data-lang="hr">ZAVRTI SADA</span><span data-lang="hy">ՊՏՏԻՐ ՀԻՄԱ</span><span data-lang="id">PUTAR SEKARANG</span><span data-lang="is">SNÚÐU NÚ</span><span data-lang="fa">الان بچرخان</span><span data-lang="it">GIRA ORA</span><span data-lang="ja">今すぐ回す</span><span data-lang="ka">დაატრიალე ახლა</span><span data-lang="kk">ҚАЗІР АЙНАЛДЫР</span><span data-lang="kl">KAAJALLAK UTERIARUK</span><span data-lang="ky">АЗЫР АЙЛАНТ</span><span data-lang="ms">PUSING SEKARANG</span><span data-lang="no">SPINN NÅ</span><span data-lang="pt">GIRE AGORA</span><span data-lang="rm">TSCHERTGA USS</span><span data-lang="sq">RROTULLO TANI</span><span data-lang="sr">ОКРЕНИ САДА</span><span data-lang="tg">ҲОЗИР ГАРДОН</span><span data-lang="th">หมุนเลย</span><span data-lang="uz">HOZIR AYLANTIRING</span><span data-lang="vi">QUAY NGAY</span><span data-lang="zh">立即旋转</span></span>
+</div>
+
+<div class="wheel__attempts">
+<span class="wheel__attempts-title"><span data-lang="en">REMAINING ATTEMPTS: </span><span data-lang="ru">ОСТАВШИЕСЯ ПОПЫТКИ: </span><span data-lang="nl">RESTERENDE POGINGEN: </span><span data-lang="pl">POZOSTAŁE PRÓBY: </span><span data-lang="ro">ÎNCERCĂRI RĂMASE: </span><span data-lang="bg">ОСТАВАЩИ ОПИТИ: </span><span data-lang="hu">HÁTRALÉVŐ KÍSÉRLETEK: </span><span data-lang="sl">PREOSTALI POSKUSI: </span><span data-lang="lt">LIKĘ BANDYMAI: </span><span data-lang="cs">ZBÝVAJÍCÍ POKUSY: </span><span data-lang="lv">ATLIKUŠIE MĒĢINĀJUMI: </span><span data-lang="tr">KALAN DENEMELER: </span><span data-lang="ar">المحاولات المتبقية: </span><span data-lang="es">INTENTOS RESTANTES: </span><span data-lang="uk">ЗАЛИШИЛОСЬ СПРОБ: </span><span data-lang="ko">남은 시도: </span><span data-lang="de">VERBLEIBENDE VERSUCHE: </span><span data-lang="sk">ZOSTÁVAJÚCE POKUSY: </span><span data-lang="be">СПРОБЫ, ЯК ЗАСТАЛІСЯ: </span><span data-lang="bn">অবশিষ্ট প্রচেষ্টা: </span><span data-lang="bs">PREOSTALI POKUŠAJI: </span><span data-lang="da">TILBAGEVÆRENDE FORSØG: </span><span data-lang="el">ΕΝΑΠΟΜΕΙΝΟΥΣΕΣ ΠΡΟΣΠΑΘΕΙΕΣ: </span><span data-lang="et">JÄÄNUD KATSED: </span><span data-lang="fi">JÄLJELLÄ OLEVAT YRITYKSET: </span><span data-lang="fr">TENTATIVES RESTANTES : </span><span data-lang="ga">IARRACHTAÍ FÁGTHA: </span><span data-lang="he">ניסיונות שנותרו: </span><span data-lang="hi">शेष प्रयास: </span><span data-lang="hr">PREOSTALI POKUŠAJI: </span><span data-lang="hy">ՄՆԱՑԱԾ ՓՈՐՁԵՐ: </span><span data-lang="id">PERCOBAAN TERSISA: </span><span data-lang="is">TILRAUNIR EFTIR: </span><span data-lang="fa">تلاش‌های باقی‌مانده: </span><span data-lang="it">TENTATIVI RIMANENTI: </span><span data-lang="ja">残り回数: </span><span data-lang="ka">დარჩენილი მცდელობები: </span><span data-lang="kk">ҚАЛҒАН ӘРЕКЕТТЕР: </span><span data-lang="kl">MISILERINERIT AMERLASUT: </span><span data-lang="ky">КАЛГАН АРАКЕТТЕР: </span><span data-lang="ms">PERCUBAAN BAKI: </span><span data-lang="no">GJENSTÅENDE FORSØK: </span><span data-lang="pt">TENTATIVAS RESTANTES: </span><span data-lang="rm">EMPROVAS RESTANTAS: </span><span data-lang="sq">PËRPJEKJE TË MBETURA: </span><span data-lang="sr">ПРЕОСТАЛИ ПОКУШАЈИ: </span><span data-lang="tg">КӮШИШҲОИ БОҚИМОНДА: </span><span data-lang="th">โอกาสที่เหลือ: </span><span data-lang="uz">QOLGAN URINISHLAR: </span><span data-lang="vi">SỐ LẦN THỬ CÒN LẠI: </span><span data-lang="zh">剩余尝试次数: </span></span>
+<span class="wheel__attempts-value" id="counter_spin">2</span>
+</div>
+
+<div class="wheel main__new-wheel">
+<div class="wheel__layout stage-1">
+<div class="wheel__spinner">
+<div class="wheel__spinner-around"></div>
+<div class="wheel__spinner-img" id="wheel"></div>
+<div class="wheel__spinner-bling"></div>
+<div class="wheel__spinner-arrow"></div>
+<div class="wheel__spinner-center" id="spinButton"></div>
+</div>
+</div>
+</div>
+
+<div class="wheel__achievements">
+<div class="wheel__achievements-fs hide" id="achievements">
+<div class="lights-content lights-content_fs">
+<img class="lights-content__gift" src="images/gift.png" alt="Gift" />
+<span class="lights-content__value">
+<span class="lights-content__value--num">150</span>
+<span class="lights-content__value--subtitle">free spins</span>
+</span>
+</div>
+</div>
+</div>
+
+<!-- Failure Modal (First Spin) -->
+<div class="main__modal-failure" id="modalFailure">
+<div class="modal-failure">
+<div class="modal-failure__inner">
+<h2 class="modal-failure__title"><span data-lang="en">Try Again!</span><span data-lang="ru">Попробуйте снова!</span><span data-lang="nl">Probeer opnieuw!</span><span data-lang="pl">Spróbuj ponownie!</span><span data-lang="ro">Încearcă din nou!</span><span data-lang="bg">Опитайте отново!</span><span data-lang="hu">Próbáld újra!</span><span data-lang="sl">Poskusi znova!</span><span data-lang="lt">Bandykite dar kartą!</span><span data-lang="cs">Zkuste to znovu!</span><span data-lang="lv">Mēģini vēlreiz!</span><span data-lang="tr">Tekrar deneyin!</span><span data-lang="ar">حاول مرة أخرى!</span><span data-lang="es">¡Inténtalo de nuevo!</span><span data-lang="uk">Спробуйте ще раз!</span><span data-lang="ko">다시 시도하세요!</span><span data-lang="de">Versuche es nochmal!</span><span data-lang="sk">Skúste to znova!</span><span data-lang="be">Паспрабуйце яшчэ раз!</span><span data-lang="bn">আবার চেষ্টা করুন!</span><span data-lang="bs">Pokušajte ponovo!</span><span data-lang="da">Prøv igen!</span><span data-lang="el">Δοκιμάστε ξανά!</span><span data-lang="et">Proovi uuesti!</span><span data-lang="fi">Yritä uudelleen!</span><span data-lang="fr">Réessayez !</span><span data-lang="ga">Bain triail eile!</span><span data-lang="he">!נסה שוב</span><span data-lang="hi">फिर से प्रयास करें!</span><span data-lang="hr">Pokušajte ponovo!</span><span data-lang="hy">Կրկին փորձեք!</span><span data-lang="id">Coba lagi!</span><span data-lang="is">Reyndu aftur!</span><span data-lang="fa">دوباره امتحان کن!</span><span data-lang="it">Riprova!</span><span data-lang="ja">もう一度挑戦！</span><span data-lang="ka">სცადეთ ხელახლა!</span><span data-lang="kk">Қайтадан байқап көріңіз!</span><span data-lang="kl">Misilerit!</span><span data-lang="ky">Кайра аракет кылыңыз!</span><span data-lang="ms">Cuba lagi!</span><span data-lang="no">Prøv igjen!</span><span data-lang="pt">Tente novamente!</span><span data-lang="rm">Emprova anc ina giada!</span><span data-lang="sq">Provo përsëri!</span><span data-lang="sr">Покушајте поново!</span><span data-lang="tg">Боз кӯшиш кунед!</span><span data-lang="th">ลองอีกครั้ง!</span><span data-lang="uz">Qayta urinib ko'ring!</span><span data-lang="vi">Thử lại!</span><span data-lang="zh">再试一次！</span></h2>
+<p class="modal-failure__text"><span data-lang="en">You have one more chance to win!</span><span data-lang="ru">У вас есть ещё один шанс выиграть!</span><span data-lang="nl">Je hebt nog één kans om te winnen!</span><span data-lang="pl">Masz jeszcze jedną szansę na wygraną!</span><span data-lang="ro">Ai încă o șansă să câștigi!</span><span data-lang="bg">Имате още един шанс да спечелите!</span><span data-lang="hu">Még egy esélyed van nyerni!</span><span data-lang="sl">Imate še eno priložnost za zmago!</span><span data-lang="lt">Turite dar vieną šansą laimėti!</span><span data-lang="cs">Máte ještě jednu šanci vyhrát!</span><span data-lang="lv">Tev ir vēl viena iespēja uzvarēt!</span><span data-lang="tr">Kazanmak için bir şansınız daha var!</span><span data-lang="ar">لديك فرصة أخرى للفوز!</span><span data-lang="es">¡Tienes una oportunidad más para ganar!</span><span data-lang="uk">У вас є ще один шанс виграти!</span><span data-lang="ko">이길 수 있는 기회가 한 번 더 있습니다!</span><span data-lang="de">Du hast noch eine Chance zu gewinnen!</span><span data-lang="sk">Máte ešte jednu šancu vyhrať!</span><span data-lang="be">У вас ёсць яшчэ адзін шанс выйграць!</span><span data-lang="bn">আপনার জেতার আরও একটি সুযোগ আছে!</span><span data-lang="bs">Imate još jednu šansu da pobijedite!</span><span data-lang="da">Du har en chance mere for at vinde!</span><span data-lang="el">Έχετε ακόμα μία ευκαιρία να κερδίσετε!</span><span data-lang="et">Sul on veel üks võimalus võita!</span><span data-lang="fi">Sinulla on vielä yksi mahdollisuus voittaa!</span><span data-lang="fr">Vous avez encore une chance de gagner !</span><span data-lang="ga">Tá seans amháin eile agat buachan!</span><span data-lang="he">!יש לך עוד הזדמנות לנצח</span><span data-lang="hi">आपके पास जीतने का एक और मौका है!</span><span data-lang="hr">Imate još jednu priliku za pobjedu!</span><span data-lang="hy">Դուք ունեք ևս մեկ հնարավորություն հաղթելու!</span><span data-lang="id">Anda punya satu kesempatan lagi untuk menang!</span><span data-lang="is">Þú átt enn eina möguleika til að vinna!</span><span data-lang="fa">یک شانس دیگر برای برنده شدن دارید!</span><span data-lang="it">Hai ancora una possibilità di vincere!</span><span data-lang="ja">もう1回チャンスがあります！</span><span data-lang="ka">თქვენ გაქვთ კიდევ ერთი შანსი მოგების!</span><span data-lang="kk">Жеңіске жету үшін тағы бір мүмкіндігіңіз бар!</span><span data-lang="kl">Ataasiinnartitsigit marlunnarpoq!</span><span data-lang="ky">Жеңүү үчүн дагы бир мүмкүнчүлүгүңүз бар!</span><span data-lang="ms">Anda mempunyai satu lagi peluang untuk menang!</span><span data-lang="no">Du har en sjanse til å vinne!</span><span data-lang="pt">Você tem mais uma chance de ganhar!</span><span data-lang="rm">Ti has anc ina schanza da gudagnar!</span><span data-lang="sq">Keni edhe një shans për të fituar!</span><span data-lang="sr">Имате још једну шансу да победите!</span><span data-lang="tg">Шумо як имконияти дигар доред, ки ғалаба кунед!</span><span data-lang="th">คุณมีโอกาสอีกหนึ่งครั้งที่จะชนะ!</span><span data-lang="uz">Yutish uchun yana bir imkoniyatingiz bor!</span><span data-lang="vi">Bạn còn một cơ hội để thắng!</span><span data-lang="zh">你还有一次获胜的机会！</span></p>
+<button class="modal-failure__button" id="spinAgainButton"><span data-lang="en">SPIN AGAIN</span><span data-lang="ru">КРУТИТЬ СНОВА</span><span data-lang="nl">DRAAI OPNIEUW</span><span data-lang="pl">KRĘĆ PONOWNIE</span><span data-lang="ro">ROTEȘTE DIN NOU</span><span data-lang="bg">ЗАВЪРТИ ОТНОВО</span><span data-lang="hu">PÖRGETS ÚJRA</span><span data-lang="sl">ZAVRTI ZNOVA</span><span data-lang="lt">SUKITE DAR KARTĄ</span><span data-lang="cs">TOČI ZNOVU</span><span data-lang="lv">GRIEZ VĒLREIZ</span><span data-lang="tr">TEKRAR ÇEVİR</span><span data-lang="ar">أدر مرة أخرى</span><span data-lang="es">GIRAR DE NUEVO</span><span data-lang="uk">КРУТИТИ ЗНОВУ</span><span data-lang="ko">다시 돌리기</span><span data-lang="de">NOCHMAL DREHEN</span><span data-lang="sk">TOČI ZNOVA</span><span data-lang="be">КРУЦІЦЬ ЗНОЎ</span><span data-lang="bn">আবার ঘোরান</span><span data-lang="bs">ZAVRTI PONOVO</span><span data-lang="da">DREJ IGEN</span><span data-lang="el">ΓΥΡΙΣΕ ΞΑΝΑ</span><span data-lang="et">KEERA UUESTI</span><span data-lang="fi">PYÖRITÄ UUDELLEEN</span><span data-lang="fr">TOURNER À NOUVEAU</span><span data-lang="ga">CAS ARÍS</span><span data-lang="he">סובב שוב</span><span data-lang="hi">फिर से घुमाएं</span><span data-lang="hr">ZAVRTI PONOVO</span><span data-lang="hy">ՊՏՏԻՐ ԿՐԿԻՆ</span><span data-lang="id">PUTAR LAGI</span><span data-lang="is">SNÚÐU AFTUR</span><span data-lang="fa">دوباره بچرخان</span><span data-lang="it">GIRA DI NUOVO</span><span data-lang="ja">もう一度回す</span><span data-lang="ka">დაატრიალე ხელახლა</span><span data-lang="kk">ҚАЙТА АЙНАЛДЫР</span><span data-lang="kl">KAAJALLAK UTERIARUK</span><span data-lang="ky">КАЙРА АЙЛАНТ</span><span data-lang="ms">PUSING LAGI</span><span data-lang="no">SPINN IGJEN</span><span data-lang="pt">GIRAR NOVAMENTE</span><span data-lang="rm">TSCHERTGA ANC INA GIADA</span><span data-lang="sq">RROTULLO PËRSËRI</span><span data-lang="sr">ОКРЕНИ ПОНОВО</span><span data-lang="tg">БОЗ ГАРДОНЕД</span><span data-lang="th">หมุนอีกครั้ง</span><span data-lang="uz">QAYTA AYLANTIRING</span><span data-lang="vi">QUAY LẠI</span><span data-lang="zh">再次旋转</span></button>
+</div>
+</div>
+</div>
+
+<!-- Success Modal (Second Spin) -->
+<div class="main__modal" id="modal">
+<div class="modal">
+<div class="modal__inner">
+<img class="modal__gift modal__gift--bottom" src="images/gift-bottom.png" alt="Decor element - gift" />
+<div class="modal__wrapper">
+<img class="modal__gift modal__gift--top" src="images/gift-top.png" alt="Decor element - gift" />
+<h2 class="modal__title"><span data-lang="en">Congratulations!</span><span data-lang="ru">Поздравляем!</span><span data-lang="nl">Gefeliciteerd!</span><span data-lang="pl">Gratulacje!</span><span data-lang="ro">Felicitări!</span><span data-lang="bg">Поздравления!</span><span data-lang="hu">Gratulálunk!</span><span data-lang="sl">Čestitamo!</span><span data-lang="lt">Sveikiname!</span><span data-lang="cs">Gratulujeme!</span><span data-lang="lv">Apsveicam!</span><span data-lang="tr">Tebrikler!</span><span data-lang="ar">تهانينا!</span><span data-lang="es">¡Felicidades!</span><span data-lang="uk">Вітаємо!</span><span data-lang="ko">축하합니다!</span><span data-lang="de">Herzlichen Glückwunsch!</span><span data-lang="sk">Blahoželáme!</span><span data-lang="be">Віншуем!</span><span data-lang="bn">অভিনন্দন!</span><span data-lang="bs">Čestitamo!</span><span data-lang="da">Tillykke!</span><span data-lang="el">Συγχαρητήρια!</span><span data-lang="et">Palju õnne!</span><span data-lang="fi">Onnittelut!</span><span data-lang="fr">Félicitations !</span><span data-lang="ga">Comhghairdeas!</span><span data-lang="he">!מזל טוב</span><span data-lang="hi">बधाई हो!</span><span data-lang="hr">Čestitamo!</span><span data-lang="hy">Շնորհավորականք!</span><span data-lang="id">Selamat!</span><span data-lang="is">Til hamingju!</span><span data-lang="fa">تبریک!</span><span data-lang="it">Congratulazioni!</span><span data-lang="ja">おめでとうございます！</span><span data-lang="ka">გილოცავთ!</span><span data-lang="kk">Құттықтаймыз!</span><span data-lang="kl">Inuugujoq!</span><span data-lang="ky">Куттуктайбыз!</span><span data-lang="ms">Tahniah!</span><span data-lang="no">Gratulerer!</span><span data-lang="pt">Parabéns!</span><span data-lang="rm">Gratulaziuns!</span><span data-lang="sq">Urime!</span><span data-lang="sr">Честитамо!</span><span data-lang="tg">Табрик!</span><span data-lang="th">ยินดีด้วย!</span><span data-lang="uz">Tabriklaymiz!</span><span data-lang="vi">Chúc mừng!</span><span data-lang="zh">恭喜！</span></h2>
+<p class="modal__text"><span data-lang="en">You've won:</span><span data-lang="ru">Вы выиграли:</span><span data-lang="nl">Je hebt gewonnen:</span><span data-lang="pl">Wygrałeś:</span><span data-lang="ro">Ai câștigat:</span><span data-lang="bg">Спечелихте:</span><span data-lang="hu">Nyertél:</span><span data-lang="sl">Zmagali ste:</span><span data-lang="lt">Laimėjote:</span><span data-lang="cs">Vyhráli jste:</span><span data-lang="lv">Jūs laimējāt:</span><span data-lang="tr">Kazandınız:</span><span data-lang="ar">لقد فزت بـ:</span><span data-lang="es">Has ganado:</span><span data-lang="uk">Ви виграли:</span><span data-lang="ko">당신이 이겼습니다:</span><span data-lang="de">Du hast gewonnen:</span><span data-lang="sk">Vyhrali ste:</span><span data-lang="be">Вы выйгралі:</span><span data-lang="bn">আপনি জিতেছেন:</span><span data-lang="bs">Osvojili ste:</span><span data-lang="da">Du har vundet:</span><span data-lang="el">Κερδίσατε:</span><span data-lang="et">Sa võitsid:</span><span data-lang="fi">Olet voittanut:</span><span data-lang="fr">Vous avez gagné :</span><span data-lang="ga">Bhuaigh tú:</span><span data-lang="he">:זכית ב</span><span data-lang="hi">आपने जीता:</span><span data-lang="hr">Osvojili ste:</span><span data-lang="hy">Դուք հաղթել եք։</span><span data-lang="id">Anda memenangkan:</span><span data-lang="is">Þú vannst:</span><span data-lang="fa">شما برنده شدید:</span><span data-lang="it">Hai vinto:</span><span data-lang="ja">獲得賞品：</span><span data-lang="ka">თქვენ მოიგეთ:</span><span data-lang="kk">Сіз ұттыңыз:</span><span data-lang="kl">Ajugaavoq:</span><span data-lang="ky">Сиз утуп алдыңыз:</span><span data-lang="ms">Anda menang:</span><span data-lang="no">Du har vunnet:</span><span data-lang="pt">Você ganhou:</span><span data-lang="rm">Ti has gudagnà:</span><span data-lang="sq">Keni fituar:</span><span data-lang="sr">Освojили сте:</span><span data-lang="tg">Шумо бурдед:</span><span data-lang="th">คุณชนะ:</span><span data-lang="uz">Siz yutdingiz:</span><span data-lang="vi">Bạn đã thắng:</span><span data-lang="zh">你赢得了：</span></p>
+<div class="ribbons ribbons--modal">
+<span><span class="bonus-gc-default">200,000 GC</span><span class="bonus-gc-ru" style="display:none">200 000 ГК</span></span>
+<span><span class="bonus-sc-default">20 SC</span><span class="bonus-sc-ru" style="display:none">20 СК</span></span>
+</div>
+<a class="claim-link cta" href="#" id="claimButton"><span data-lang="en">Claim bonus</span><span data-lang="ru">Получить бонус</span><span data-lang="nl">Claim bonus</span><span data-lang="pl">Odbierz bonus</span><span data-lang="ro">Revendică bonusul</span><span data-lang="bg">Вземи бонус</span><span data-lang="hu">Bónusz igénylése</span><span data-lang="sl">Prevzemi bonus</span><span data-lang="lt">Gauti premiją</span><span data-lang="cs">Získat bonus</span><span data-lang="lv">Saņemt bonusu</span><span data-lang="tr">Bonusu al</span><span data-lang="ar">احصل على المكافأة</span><span data-lang="es">Reclamar bono</span><span data-lang="uk">Отримати бонус</span><span data-lang="ko">보너스 받기</span><span data-lang="de">Bonus einlösen</span><span data-lang="sk">Získať bonus</span><span data-lang="be">Атрымаць бонус</span><span data-lang="bn">বোনাস দাবি করুন</span><span data-lang="bs">Preuzmi bonus</span><span data-lang="da">Hent bonus</span><span data-lang="el">Διεκδίκηση μπόνους</span><span data-lang="et">Lunasta boonus</span><span data-lang="fi">Lunasta bonus</span><span data-lang="fr">Réclamer le bonus</span><span data-lang="ga">Éiligh bónas</span><span data-lang="he">דרוש בונוס</span><span data-lang="hi">बोनस प्राप्त करें</span><span data-lang="hr">Preuzmi bonus</span><span data-lang="hy">Ստանալ բոնուս</span><span data-lang="id">Klaim bonus</span><span data-lang="is">Sækja bónus</span><span data-lang="fa">دریافت جایزه</span><span data-lang="it">Richiedi bonus</span><span data-lang="ja">ボーナスを獲得</span><span data-lang="ka">მიიღეთ ბონუსი</span><span data-lang="kk">Бонусты алу</span><span data-lang="kl">Bonus tigui</span><span data-lang="ky">Бонусту алуу</span><span data-lang="ms">Tuntut bonus</span><span data-lang="no">Hent bonus</span><span data-lang="pt">Resgatar bônus</span><span data-lang="rm">Retschaiver bonus</span><span data-lang="sq">Merr bonusin</span><span data-lang="sr">Преузми бонус</span><span data-lang="tg">Бонусро гиред</span><span data-lang="th">รับโบนัส</span><span data-lang="uz">Bonusni olish</span><span data-lang="vi">Nhận thưởng</span><span data-lang="zh">领取奖金</span></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+// ===== LANGUAGE DETECTION & SWITCHING =====
+const html = document.querySelector('html');
+
+const getAvailableLanguages = () => {
+    const langElements = document.querySelectorAll('[data-lang]');
+    const languages = new Set();
+    langElements.forEach((langElement) => {
+        if (langElement.tagName.toLowerCase() === 'html') return;
+        languages.add(langElement.getAttribute('data-lang'));
+    });
+    return Array.from(languages);
+};
+
+const detectLanguage = () => {
+    const availableLanguages = getAvailableLanguages();
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    if (urlLang && availableLanguages.includes(urlLang)) {
+        return urlLang;
+    }
+    const browserLang = navigator.language || navigator.userLanguage;
+    const langCode = browserLang.split('-')[0];
+    return availableLanguages.includes(langCode) ? langCode : 'en';
+};
+
+const initLanguage = (lang) => {
+    document.querySelectorAll('[data-lang]').forEach((element) => {
+        if (element.tagName.toLowerCase() === 'html') return;
+        if (element.getAttribute('data-lang') === lang) {
+            element.style.display = '';
+        } else {
+            element.style.display = 'none';
+        }
+    });
+    html.setAttribute('data-lang', lang);
+};
+
+const initLanguageSwitcher = () => {
+    const currentLang = detectLanguage();
+    html.setAttribute('data-lang', currentLang);
+    initLanguage(currentLang);
+    const langSelect = document.getElementById('langSelect');
+    if (langSelect) {
+        langSelect.value = currentLang;
+        langSelect.addEventListener('change', (event) => {
+            const newLang = event.target.value;
+            initLanguage(newLang);
+        });
+    }
+    return currentLang;
+};
+
+initLanguageSwitcher();
+
+// Wheel configuration - same as previous page
+const wheelSegments = [
+{ text: '75 FREE SPINS', value: 75, angle: 0 },
+{ text: '\u{1F4A3}', value: 0, angle: 45 },
+{ text: '50 FREE SPINS', value: 50, angle: 90 },
+{ text: '\u{1F4A3}', value: 0, angle: 135 },
+{ text: '25 FREE SPINS', value: 25, angle: 180 },
+{ text: '\u{1F4A3}', value: 0, angle: 225 },
+{ text: '150 FREE SPINS', value: 150, angle: 270 },
+{ text: '\u{1F4A3}', value: 0, angle: 315 }
+];
+
+let isSpinning = false;
+let currentRotation = 0;
+let spinCount = 0;
+let wheelOffset = 0;
+let remainingAttempts = 2;
+
+// Update attempts counter
+function updateAttempts() {
+document.getElementById('counter_spin').textContent = remainingAttempts;
+}
+
+// Spin the wheel
+function spinWheel() {
+if (isSpinning || remainingAttempts <= 0) return;
+
+isSpinning = true;
+spinCount++;
+remainingAttempts--;
+updateAttempts();
+
+const spinButton = document.getElementById('spinButton');
+spinButton.style.pointerEvents = 'none';
+spinButton.style.opacity = '0.7';
+
+const wheel = document.getElementById('wheel');
+const spinner = wheel.parentElement;
+
+let selectedSegment;
+let segmentIndex;
+
+if (spinCount === 1) {
+// First spin always fails - select "PLEASE TRY AGAIN" segment to the left of 150 FREE SPINS
+// Index 5 is at angle 225°, which is to the left of index 6 (150 FREE SPINS at 270°)
+segmentIndex = 5;
+selectedSegment = wheelSegments[segmentIndex];
+} else {
+// Second spin always wins 150 free spins
+segmentIndex = 6;
+selectedSegment = wheelSegments[segmentIndex];
+}
+
+// Calculate rotation
+const fullSpins = spinCount === 1 ? 6 : 12;
+const segmentAngle = wheelSegments[segmentIndex].angle;
+const baseRotation = (360 - segmentAngle) % 360;
+const targetAngle = baseRotation + (360 * fullSpins) + wheelOffset;
+const finalRotation = targetAngle;
+
+// Stop idle animation and reset
+wheel.style.animation = 'none';
+wheel.style.transform = 'rotate(0deg)';
+
+// Add animation class
+spinner.classList.add('wheel__spinner--animate');
+
+// Add win class for second spin to use longer animation
+if (spinCount === 2) {
+spinner.classList.add('wheel__spinner--win');
+}
+
+setTimeout(() => {
+wheel.style.transform = `rotate(${finalRotation}deg)`;
+currentRotation = finalRotation % 360;
+
+const animationDuration = spinCount === 2 ? 7000 : 6000;
+setTimeout(() => {
+spinner.classList.remove('wheel__spinner--animate');
+spinner.classList.remove('wheel__spinner--win');
+wheel.style.animation = '';
+
+if (spinCount === 1) {
+// First spin - show failure popup
+document.getElementById('modalFailure').classList.add('active');
+isSpinning = false;
+} else {
+// Second spin - show success modal
+document.getElementById('achievements').classList.remove('hide');
+document.getElementById('modal').classList.add('active');
+isSpinning = false;
+}
+}, animationDuration);
+}, 50);
+}
+
+// Event listeners
+document.getElementById('spinButton').addEventListener('click', spinWheel);
+
+// Spin again button (from failure modal)
+document.getElementById('spinAgainButton').addEventListener('click', () => {
+// Close failure modal
+document.getElementById('modalFailure').classList.remove('active');
+// Auto spin again
+spinWheel();
+});
+
+// Claim button
+document.getElementById('claimButton').addEventListener('click', (e) => {
+e.preventDefault();
+
+window.location.href = 'https://stake.com/?c=rPFh1hSP'; return;
+const currentUrl = new URL(window.location.href);
+const params = currentUrl.searchParams;
+
+let finalUrl = baseUrl;
+if (params.toString()) {
+const separator = baseUrl.includes('?') ? '&' : '?';
+finalUrl = baseUrl + separator + params.toString();
+}
+
+window.location.href = finalUrl;
+});
+
+// Initialize
+updateAttempts();
+</script>
+</body>
+</html>
