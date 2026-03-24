@@ -1102,7 +1102,17 @@ html[data-lang="ru"] .bonus-ru { display: inline !important; }
 html[data-lang="ru"] .bonus-clarify-ru { display: block !important; }
 html[data-lang="tr"] .bonus-default { display: none !important; }
 html[data-lang="tr"] .bonus-tr { display: inline !important; }
-.social-proof { color: #fff; font-size: 12px; display: none; text-align: center; }
+.social-proof { color: #fff; font-size: 11px; display: none; text-align: center; margin-top: 15px; }
+html[data-lang="ru"] .popup__success-main-text,
+html[data-lang="tr"] .popup__success-main-text { font-size: 16px !important; }
+html[data-lang="ru"] .popup__success-subtext,
+html[data-lang="tr"] .popup__success-subtext { font-size: 13px !important; }
+@media (min-width: 600px) {
+  html[data-lang="ru"] .popup__success-main-text,
+  html[data-lang="tr"] .popup__success-main-text { font-size: 21px !important; }
+  html[data-lang="ru"] .popup__success-subtext,
+  html[data-lang="tr"] .popup__success-subtext { font-size: 16px !important; }
+}
 html[data-lang="ru"] .social-proof.ru-social { display: block !important; }
 html[data-lang="tr"] .social-proof.tr-social { display: block !important; }
 html[data-lang="ru"] .popup__success { background-image: url(images/popup-success-ru.png) !important; }
