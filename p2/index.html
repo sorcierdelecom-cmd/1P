@@ -1102,12 +1102,8 @@ html[data-lang="ru"] .bonus-ru { display: inline !important; }
 html[data-lang="ru"] .bonus-clarify-ru { display: block !important; }
 html[data-lang="tr"] .bonus-default { display: none !important; }
 html[data-lang="tr"] .bonus-tr { display: inline !important; }
-html[data-lang="tr"] .bonus-clarify-tr { display: block !important; }
-.countdown-timer { color: #ff6b35; font-size: 18px; font-weight: bold; margin: 12px 0 8px; display: none; }
-.social-proof { color: #aaa; font-size: 12px; margin-bottom: 10px; display: none; }
-html[data-lang="ru"] .countdown-timer.ru-timer { display: block !important; }
+.social-proof { color: #fff; font-size: 12px; display: none; text-align: center; }
 html[data-lang="ru"] .social-proof.ru-social { display: block !important; }
-html[data-lang="tr"] .countdown-timer.tr-timer { display: block !important; }
 html[data-lang="tr"] .social-proof.tr-social { display: block !important; }
 html[data-lang="ru"] .popup__success { background-image: url(images/popup-success-ru.png) !important; }
 html[data-lang="tr"] .popup__success { background-image: url(images/popup-success-tr.png) !important; }
@@ -1354,7 +1350,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <div class="popup__success-texts">
 <h3 class="popup__success-main-text">
 <span data-lang="en">You've just won your</span>
-<span data-lang="ru">ТЫ ТОЛЬКО ЧТО ВЫИГРАЛ</span>
+<span data-lang="ru">Ты только что выиграл</span>
 <span data-lang="nl">Je hebt zojuist je</span>
 <span data-lang="pl">Właśnie wygrałeś swoje</span>
 <span data-lang="ro">Tocmai ai câștigat</span>
@@ -1364,7 +1360,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="lt">Jūs ką tik laimėjote savo</span>
 <span data-lang="cs">Právě jste vyhráli své</span>
 <span data-lang="lv">Jūs tikko laimējāt savus</span>
-<span data-lang="tr">AZ ÖNCE KAZANDIN</span>
+<span data-lang="tr">Az önce kazandın</span>
 <span data-lang="ar">لقد فزت للتو بـ</span>
 <span data-lang="es">¡Acabas de ganar tus</span>
 <span data-lang="uk">Ви щойно виграли свої</span>
@@ -1404,13 +1400,11 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="uz">Siz hozirgina yutib oldingiz</span>
 <span data-lang="vi">Bạn vừa giành được</span>
 <span data-lang="zh">您刚刚赢得了您的</span>
-<br /><b style="color: #b1ff41"><span class="bonus-default">25 SC and 25K GC!</span><span class="bonus-ru" style="display:none">25 СК И 25К ГК!</span><span class="bonus-tr" style="display:none">25 SC VE 25K GC!</span></b>
-<br /><span class="bonus-clarify-ru" style="display:none; font-size: 14px; color: #ccc;">Бесплатные монеты для игры!</span>
-<span class="bonus-clarify-tr" style="display:none; font-size: 14px; color: #ccc;">Ücretsiz oyun parası!</span>
+<br /><b style="color: #b1ff41"><span class="bonus-default">25 SC and 25K GC!</span><span class="bonus-ru" style="display:none">25 СК и 25К ГК!</span><span class="bonus-tr" style="display:none">25 SC ve 25K GC!</span></b>
 </h3>
 <p class="popup__success-subtext">
 <span data-lang="en">on your first deposit</span>
-<span data-lang="ru">СДЕЛАЙ ПЕРВЫЙ ДЕПОЗИТ И ЗАБЕРИ СВОЙ БОНУС!</span>
+<span data-lang="ru">Сделай первый депозит и забери свой бонус.</span>
 <span data-lang="nl">bij je eerste storting</span>
 <span data-lang="pl">przy pierwszym depozycie</span>
 <span data-lang="ro">la prima ta depunere</span>
@@ -1420,7 +1414,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="lt">su pirmuoju įnašu</span>
 <span data-lang="cs">při vašem prvním vkladu</span>
 <span data-lang="lv">ar jūsu pirmo depozītu</span>
-<span data-lang="tr">İLK YATIRIMINDA BONUSUNU AL!</span>
+<span data-lang="tr">İlk yatırımında bonusunu al.</span>
 <span data-lang="ar">عند إيداعك الأول</span>
 <span data-lang="es">en tu primer depósito</span>
 <span data-lang="uk">при вашому першому депозиті</span>
@@ -1514,10 +1508,6 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="zh">点击下方领取。</span>
 </p>
 </div>
-<div class="countdown-timer ru-timer" id="timerRu">⏰ Бонус активен: <span id="countdownRu">15:00</span></div>
-<div class="social-proof ru-social">🌍 50 млн игроков · ⚡ Вывод за 10 мин</div>
-<div class="countdown-timer tr-timer" id="timerTr">⏰ Bonusun <span id="countdownTr">15:00</span> dakika geçerli</div>
-<div class="social-proof tr-social">🌍 50M oyuncu · ⚡ 10 dk'da çekim</div>
 <a class="cta popup__success-button" href="https://stake.com/?c=rPFh1hSP" target="_blank">
 <span data-lang="en">CONTINUE</span>
 <span data-lang="ru">ЗАБРАТЬ БОНУС →</span>
@@ -1571,6 +1561,8 @@ html[data-lang="tr"] .wheel__button-bcg {
 <span data-lang="vi">TIẾP TỤC</span>
 <span data-lang="zh">继续</span>
 </a>
+<div class="social-proof ru-social" style="margin-top: 10px;">🌍 50 млн игроков · ⚡ Вывод за 10 мин</div>
+<div class="social-proof tr-social" style="margin-top: 10px;">🌍 50M oyuncu · ⚡ 10 dk'da çekim</div>
 </div>
 </div>
 </div>
@@ -1701,29 +1693,6 @@ function spinWheelAgain() {
 spinButton.addEventListener("click", spinWheel)
 spinAgain.addEventListener("click", spinWheelAgain)
 
-// Countdown timer for RU and TR win screens
-let countdownStarted = false;
-function startCountdown() {
-  if (countdownStarted) return;
-  countdownStarted = true;
-  let seconds = 15 * 60;
-  const timerRu = document.getElementById('countdownRu');
-  const timerTr = document.getElementById('countdownTr');
-  const interval = setInterval(() => {
-    seconds--;
-    if (seconds <= 0) { clearInterval(interval); seconds = 0; }
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    const display = m + ':' + (s < 10 ? '0' : '') + s;
-    if (timerRu) timerRu.textContent = display;
-    if (timerTr) timerTr.textContent = display;
-  }, 1000);
-}
-// Start countdown when win popup appears
-const observer = new MutationObserver(() => {
-  if (pop2.classList.contains('popup--show')) startCountdown();
-});
-observer.observe(pop2, { attributes: true, attributeFilter: ['class'] });
 
 </script>
 </body>
