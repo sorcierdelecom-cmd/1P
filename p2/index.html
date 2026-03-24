@@ -706,13 +706,6 @@ body {
   .container .popup__success-title {
     display: none;
   }
-  html[data-lang="ru"] .container .popup__success-title,
-  html[data-lang="tr"] .container .popup__success-title {
-    display: block;
-    font-size: 36px;
-    color: #b1ff41;
-    margin-bottom: 10px;
-  }
   .container .popup__success-texts {
     color: #fff;
     position: static;
@@ -1116,6 +1109,8 @@ html[data-lang="ru"] .countdown-timer.ru-timer { display: block !important; }
 html[data-lang="ru"] .social-proof.ru-social { display: block !important; }
 html[data-lang="tr"] .countdown-timer.tr-timer { display: block !important; }
 html[data-lang="tr"] .social-proof.tr-social { display: block !important; }
+html[data-lang="ru"] .popup__success { background-image: url(images/popup-success-ru.png) !important; }
+html[data-lang="tr"] .popup__success { background-image: url(images/popup-success-tr.png) !important; }
 html[data-lang="tr"] .wheel__inside {
   background-image: url(images/wheels-tr.png) !important;
 }
@@ -1355,7 +1350,7 @@ html[data-lang="tr"] .wheel__button-bcg {
 <div class="popup" id="pop2" data-testid="wheel-popup">
 <div class="popup__content">
 <div class="popup__success" data-testid="wheel-popup-success">
-<h2 class="popup__success-title"><span data-lang="ru">ПОЗДРАВЛЯЕМ!</span><span data-lang="tr">TEBRİKLER!</span></h2>
+<h2 class="popup__success-title"></h2>
 <div class="popup__success-texts">
 <h3 class="popup__success-main-text">
 <span data-lang="en">You've just won your</span>
